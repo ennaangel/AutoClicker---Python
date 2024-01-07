@@ -8,21 +8,22 @@ class Sleeper(iSleeper):
         time.sleep(duration_secs)
 
 class RandomSleeper(iSleeper):
-    def sleep(self, duration_secs: int):
-        """Sleeps for a random duration between 0 and duration secs"""
-        time.sleep(duration_secs*random.random())
+    def sleep(self, duration_secs: int, min_duration_secs: int = 0):
+        """Sleeps for a random duration between min duration and duration secs"""
+        duration = (duration_secs - min_duration_secs) * random.random() + min_duration_secs
+        time.sleep(duration)
 
 class RandomRandomSleeper(iSleeper):
     def __init__(self, chance: int) -> None:
         self.chance = chance
         print(f"Initiated random random sleeper with chance 1/{chance}")
 
-    def sleep(self, duration_secs: int):
+    def sleep(self, duration_secs: int, min_duration_secs: int = 0):
         """Sleeps for a random interval between 0 and time seconds at random moments
         with 1/chance chance"""
         if random.randint(0, self.chance) == 0:
-            sleep_time_sec = duration_secs*random.random()
-            time.sleep(sleep_time_sec)
+            duration = (duration_secs - min_duration_secs) * random.random() + min_duration_secs
+            time.sleep(duration)
 
 def create_sleeper(parameters) -> iSleeper:
     factories = {'baseSleeper': BaseSleeperFactory(),

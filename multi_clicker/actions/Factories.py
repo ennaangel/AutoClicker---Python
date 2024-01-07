@@ -30,7 +30,8 @@ class ClickActionFactory(iActionFactory):
 class SleepActionFactory(iActionFactory):
     def create_action(self, parameters: dict) -> Actions.SleepAction:
         Sleeper = Sleepers.create_sleeper(parameters['parameters'])
-        return Actions.SleepAction(Sleeper = Sleeper, duration_secs = parameters['duration'])
+        min_duration_secs = parameters.get('duration', 0) # Set min duration to 0 if not givrn
+        return Actions.SleepAction(Sleeper = Sleeper, duration_secs = parameters['duration'], min_duration_secs = min_duration_secs)
     
 class MultiActionFactory(iActionFactory):
     def create_action(self, parameters: dict) -> Actions.MultiAction:
