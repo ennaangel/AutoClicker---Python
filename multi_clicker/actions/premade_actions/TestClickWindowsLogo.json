@@ -1,0 +1,17 @@
+{
+    "action": "clickLocation",
+    "action_parameters": {
+        "parameters": {
+            "clicker": {
+                "type": "premadeClicker",
+                "name": "QuickRandomClick"
+            },
+            "locator": {
+                "type": "imageFinder",
+                "image_file": "testWindowLogo.png",
+                "folder": "./Tests/TestData",
+                "confidence": 0.9
+            }
+        }
+    }
+}

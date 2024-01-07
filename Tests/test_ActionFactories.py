@@ -21,10 +21,16 @@ def test_SleepFactory():
               }
     Factories.create_action(params)
 
+def test_premade_click_windows_logo():
+    ClickLogo = Factories.create_action({'action': 'premadeAction',
+                                         'action_parameters':{'name': 'TestClickWindowsLogo'}})
+    ClickLogo.do()
+
 
 def main():
     test_ClickerFactory()
     test_SleepFactory()
+    test_premade_click_windows_logo()
 
 if __name__ == "__main__":
     main()
