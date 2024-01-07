@@ -1,3 +1,5 @@
+import pyautogui
+
 class iLocator:
     def locate(self):
         pass
@@ -7,4 +9,9 @@ class ImageFinder(iLocator):
         self.path
 
     def locate(self):
-        return 
+        """Returns centra location of the image, if not found return None"""
+        try:
+            location = pyautogui.locateOnScreen(path, confidence = confidence, grayscale = grayscale)
+        except pyautogui.ImageNotFoundException:
+            return None
+        return pyautogui.center(location) 
