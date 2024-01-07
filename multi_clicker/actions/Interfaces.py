@@ -14,3 +14,7 @@ class iAction:
 class iActionFactory:
     def create_action(self, parameters: dict)-> iAction:
         pass
+
+class iLocator:
+    def locate(self):
+        pass
