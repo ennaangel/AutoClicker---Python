@@ -15,12 +15,12 @@ class ClickAction(iAction):
         self.Clicker.click(self.position)
 
 class SleepAction(iAction):
-    def __init__(self, Sleeper: iSleeper, duration_secs: int, min_duration_sec: int = 0):
+    def __init__(self, Sleeper: iSleeper, duration_secs: int, min_duration_secs: int = 0):
         """Initiate Sleeper action by passing a Sleeper and the sleep duration
         """
         self.Sleeper: iClicker = Sleeper
         self.duration_secs: int = duration_secs
-        self.min_duration_sec: int = min_duration_sec
+        self.min_duration_secs: int = min_duration_secs
 
     def do(self):
         """Sleep for duration_secs
@@ -40,11 +40,9 @@ class LocatorClickerAction(iClicker):
         self.Clicker = Clicker
         self.Locator = Locator
         self.SleeperAction = SleeperAction
-        self.delay_secs = delay_secs
-        self.min_duration_secs
 
     def do(self):
         location = self.Locator.locate()
-        if self.Sl != None:
+        if self.SleeperAction != None:
             self.SleeperAction.do()
         self.Clicker.click(location)
