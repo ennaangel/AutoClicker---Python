@@ -13,7 +13,8 @@ def create_action(parameters)-> iAction:
     factories = {'premadeAction': PremadeActionFactory(),
                      'clickAction': ClickActionFactory(),
                      'sleepAction': SleepActionFactory(),
-                     'multiAction': MultiActionFactory()}
+                     'multiAction': MultiActionFactory(),
+                     'clickLocation': LocatorClickerActionFactory()}
     Factory = factories[parameters['action']]
     return Factory.create_action(parameters['action_parameters'])
 
@@ -33,11 +34,22 @@ class SleepActionFactory(iActionFactory):
         min_duration_secs = parameters.get('duration', 0) # Set min duration to 0 if not givrn
         return Actions.SleepAction(Sleeper = Sleeper, duration_secs = parameters['duration'], min_duration_secs = min_duration_secs)
     
+class LocatorClickerActionFactory(iActionFactory):
+    def create_action(self, parameters: dict) -> Actions.LocatorClickerAction:
+        Clicker = Clickers.create_clicker(parameters['parameters']['clicker'])
+        Locator = Locator.create_locator(parameters['parameters']['locator'])
+        # Set Sleeper if required
+        if parameters['parameters'].get('sleeper', False) != False:
+            SleeperAction = SleepActionFactory.create_sleeper(parameters['parameters']['sleeper'])
+        else:
+            SleeperAction = None
+        return Actions.LocatorClickerAction(Locator = Locator, Clicker = Clicker, SleeperAction = SleeperAction) 
+    
 class MultiActionFactory(iActionFactory):
     def create_action(self, parameters: dict) -> Actions.MultiAction:
         actions = [create_action(action) for action in parameters['actions']]
         return Actions.MultiAction(actions = actions)
-    
+
 class PremadeActionFactory(iActionFactory):
     def create_action(self, parameters: dict) -> iAction:
         name = parameters['name']
