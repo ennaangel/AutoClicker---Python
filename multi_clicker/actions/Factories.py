@@ -8,6 +8,7 @@ from actions.Interfaces import *
 import actions.Clickers as Clickers
 import actions.Sleepers as Sleepers
 import actions.Actions as Actions
+import actions.Locators as Locators
 
 def create_action(parameters)-> iAction:
     factories = {'premadeAction': PremadeActionFactory(),
@@ -37,7 +38,7 @@ class SleepActionFactory(iActionFactory):
 class LocatorClickerActionFactory(iActionFactory):
     def create_action(self, parameters: dict) -> Actions.LocatorClickerAction:
         Clicker = Clickers.create_clicker(parameters['parameters']['clicker'])
-        Locator = Locator.create_locator(parameters['parameters']['locator'])
+        Locator = Locators.create_locator(parameters['parameters']['locator'])
         # Set Sleeper if required
         if parameters['parameters'].get('sleeper', False) != False:
             SleeperAction = SleepActionFactory.create_sleeper(parameters['parameters']['sleeper'])
