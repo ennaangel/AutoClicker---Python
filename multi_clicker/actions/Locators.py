@@ -1,9 +1,7 @@
 import pyautogui
 import os
 
-class iLocator:
-    def locate(self):
-        pass
+from actions.Interfaces import iLocator
 
 class ImageFinder(iLocator):
     def __init__(self, image_file: str, folder: str = "", confidence = 0.9, grayscale = False, displace_pixels: tuple = None) -> None:
@@ -19,6 +17,8 @@ class ImageFinder(iLocator):
         self.confidence = confidence 
         self.grayscale = grayscale
         self.displace_pixels = displace_pixels
+        print("ImageFinder intialised")
+        print(f" - image to locate: {self.path}")
 
     def locate(self):
         """Returns centra location of the image, if not found return None"""
@@ -43,3 +43,20 @@ class ImageFinder(iLocator):
         location_list[1] = location[1] + displace_pixels[1]
         location_list[0] = location[0] + displace_pixels[0]
         return location_list
+
+def create_locator(parameters: dict)->iLocator:
+    Factories = {'imageFinder': ImageFinderFactory()}
+    Factory = Factories[parameters['type']]
+    return Factory.create_locator(parameters)
+
+class iLocatorFactory():
+    def create_locator(self, parameters: dict)-> iLocator:
+        pass
+
+class ImageFinderFactory(iLocator):
+    def create_locator(self, parameters: dict)->ImageFinder:
+        return ImageFinder(image_file = parameters['image_file'], 
+                           folder = parameters['folder'], 
+                           confidence = parameters.get('confidence', 0.9), 
+                           grayscale = parameters.get('grayscale', False), 
+                           displace_pixels = parameters.get('displace_pixels', None))

@@ -36,6 +36,15 @@ class MultiAction(iAction):
             action.do()
 
 class LocatorClickerAction(iClicker):
-    def __init__(self, Locator: iLocator, Clicker: iClicker) -> None:
+    def __init__(self, Locator: iLocator, Clicker: iClicker, SleeperAction: SleepAction = None) -> None:
         self.Clicker = Clicker
         self.Locator = Locator
+        self.SleeperAction = SleeperAction
+        self.delay_secs = delay_secs
+        self.min_duration_secs
+
+    def do(self):
+        location = self.Locator.locate()
+        if self.Sl != None:
+            self.SleeperAction.do()
+        self.Clicker.click(location)
