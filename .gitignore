@@ -1,0 +1,7 @@
+# Ignore all build items
+build/
+
+#Ignore exe files
+*.exe
+#Ignore python cache files
+*.pyc

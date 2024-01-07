@@ -1,0 +1,81 @@
+{"action": "multiAction",
+"action_parameters": {"actions": [
+    {
+        "action": "sleepAction",
+        "action_parameters": {
+            "parameters": {
+                "type": "randomSleeper"
+            },
+            "duration": 0.7
+        }
+    },
+    {
+        "action": "clickAction",
+        "action_parameters": {
+            "parameters": {
+                "type": "premadeClicker",
+                "name": "QuickRandomClick"
+            },
+            "position": [174,850]
+        }
+    },
+    {
+        "action": "sleepAction",
+        "action_parameters": {
+            "parameters": {
+                "type": "randomSleeper"
+            },
+            "duration": 0.4
+        }
+    },
+    {
+        "action": "clickAction",
+        "action_parameters": {
+            "parameters": {
+                "type": "premadeClicker",
+                "name": "QuickRandomClick"
+            },
+            "position": [220,773]
+        }
+    },
+    {
+        "action": "sleepAction",
+        "action_parameters": {
+            "parameters": {
+                "type": "randomSleeper"
+            },
+            "duration": 0.2
+        }
+    },
+    {
+        "action": "clickAction",
+        "action_parameters": {
+            "parameters": {
+                "type": "premadeClicker",
+                "name": "QuickRandomClick"
+            },
+            "position": [220,773]
+        }
+    },
+    {
+        "action": "sleepAction",
+        "action_parameters": {
+            "parameters": {
+                "type": "randomRandomSleeper",
+                "chance": 20
+            },
+            "duration": 6
+        }
+    },
+    {
+        "action": "sleepAction",
+        "action_parameters": {
+            "parameters": {
+                "type": "randomRandomSleeper",
+                "chance": 300
+            },
+            "duration": 50
+        }
+    }
+]}
+}

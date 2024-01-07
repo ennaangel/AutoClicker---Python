@@ -1,0 +1,23 @@
+{"action": "multiAction",
+"action_parameters": {"actions": [
+    {
+        "action": "clickAction",
+        "action_parameters": {
+            "parameters": {
+                "type": "premadeClicker",
+                "name": "QuickRandomClick"
+            },
+            "position": [30,910]
+        }
+    },
+    {
+        "action": "sleepAction",
+        "action_parameters": {
+            "parameters": {
+                "type": "randomSleeper"
+            },
+            "duration": 3
+        }
+    }
+]}
+}

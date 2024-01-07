@@ -1,0 +1,9 @@
+{"action": "clickAction",
+"action_parameters": {
+    "parameters": {
+        "type": "premadeClicker",
+        "name": "QuickRandomClick"
+    },
+    "position": [30,910]
+}
+}
