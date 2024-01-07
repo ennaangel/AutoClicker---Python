@@ -1,15 +1,16 @@
-    sys.path.append('./multi_clicker')
+import sys
+sys.path.append('./multi_clicker')
 
+from actions import Locators
 
-    from actions import Locators
+def test_image_finder():
+    ImFi = Locators.ImageFinder(image_file = 'testWindowLogo.png', folder = './Tests/TestData/')
+    result = ImFi.locate()
+    print(result)
+    assert result == (29, 1056), "Wrong windows logo location"
 
-    def test_image_finder():
-        ImFi = Locators.ImageFinder(image_file = 'testVsCLogo.png', folder = './Tests/TestData/')
-        print(ImFi.locate())
+def main():
+    test_image_finder()
 
-    def main():
-        test_image_finder()
-
-
-    if __name__ == "__main__":
-        main()
+if __name__ == "__main__":
+    main()
