@@ -7,7 +7,7 @@ class iLocator:
 
 class ImageFinder(iLocator):
     def __init__(self, image_file: str, folder: str = "", confidence = 0.9, grayscale = False) -> None:
-            """Find centre of image
+        """Find centre of image
 
         Args:
             image_file (str): file name of image
