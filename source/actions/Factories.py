@@ -15,7 +15,8 @@ def create_action(parameters)-> iAction:
                      'clickAction': ClickActionFactory(),
                      'sleepAction': SleepActionFactory(),
                      'multiAction': MultiActionFactory(),
-                     'clickLocation': LocatorClickerActionFactory()}
+                     'clickLocation': LocatorClickerActionFactory(),
+                     'waitLocationClick': WaitTillLocationAndClickActionFactory()}
     Factory = factories[parameters['action']]
     return Factory.create_action(parameters['action_parameters'])
 
@@ -44,7 +45,24 @@ class LocatorClickerActionFactory(iActionFactory):
             SleeperAction = SleepActionFactory.create_sleeper(parameters['parameters']['sleeper'])
         else:
             SleeperAction = None
-        return Actions.LocatorClickerAction(Locator = Locator, Clicker = Clicker, SleeperAction = SleeperAction) 
+        return Actions.LocatorClickerAction(Locator = Locator, Clicker = Clicker, SleeperAction = SleeperAction)
+    
+class WaitTillLocationAndClickActionFactory(iActionFactory):
+    def create_action(self, parameters: dict) -> Actions.WaitTillLocationAndClickAction:
+        Clicker = Clickers.create_clicker(parameters['parameters']['clicker'])
+        Locator = Locators.create_locator(parameters['parameters']['locator'])
+        
+        # Set iterationSleeper if required
+        if parameters['parameters'].get('iterationSleeper', False) != False:
+            IterationSleeperAction = SleepActionFactory.create_sleeper(parameters['parameters']['iterationSleeper'])
+        else:
+            IterationSleeperAction = None
+        # Set waitSleeper if required
+        if parameters['parameters'].get('waitSleeper', False) != False:
+            WaitSleeperAction = SleepActionFactory.create_sleeper(parameters['parameters']['waitSleeper'])
+        else:
+            WaitSleeperAction = None
+        return Actions.LocatorClickerAction(Locator = Locator, Clicker = Clicker, WaitSleeperAction = WaitSleeperAction, IterationSleeperAction = IterationSleeperAction) 
     
 class MultiActionFactory(iActionFactory):
     def create_action(self, parameters: dict) -> Actions.MultiAction:
