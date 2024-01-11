@@ -42,7 +42,7 @@ class LocatorClickerActionFactory(iActionFactory):
         Locator = Locators.create_locator(parameters['parameters']['locator'])
         # Set Sleeper if required
         if parameters['parameters'].get('sleeper', False) != False:
-            SleeperAction = SleepActionFactory.create_sleeper(parameters['parameters']['sleeper'])
+            SleeperAction = create_action(parameters['parameters']['sleeper'])
         else:
             SleeperAction = None
         return Actions.LocatorClickerAction(Locator = Locator, Clicker = Clicker, SleeperAction = SleeperAction)
@@ -54,15 +54,15 @@ class WaitTillLocationAndClickActionFactory(iActionFactory):
         
         # Set iterationSleeper if required
         if parameters['parameters'].get('iterationSleeper', False) != False:
-            IterationSleeperAction = SleepActionFactory.create_sleeper(parameters['parameters']['iterationSleeper'])
+            IterationSleeperAction = create_action(parameters['parameters']['iterationSleeper'])
         else:
             IterationSleeperAction = None
         # Set waitSleeper if required
         if parameters['parameters'].get('waitSleeper', False) != False:
-            WaitSleeperAction = SleepActionFactory.create_sleeper(parameters['parameters']['waitSleeper'])
+            WaitSleeperAction = create_action(parameters['parameters']['waitSleeper'])
         else:
             WaitSleeperAction = None
-        return Actions.LocatorClickerAction(Locator = Locator, Clicker = Clicker, WaitSleeperAction = WaitSleeperAction, IterationSleeperAction = IterationSleeperAction) 
+        return Actions.WaitTillLocationAndClickAction(Locator = Locator, Clicker = Clicker, WaitSleeperAction = WaitSleeperAction, IterationSleeperAction = IterationSleeperAction) 
     
 class MultiActionFactory(iActionFactory):
     def create_action(self, parameters: dict) -> Actions.MultiAction:
