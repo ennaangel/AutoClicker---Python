@@ -1,6 +1,6 @@
 
 import time
-import ClickerFunctions
+import ClickerFunctions as ClickerFunctions
 
 
 

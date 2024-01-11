@@ -1,7 +1,7 @@
 import sys
 
 sys.path.append('')
-import ImageFinder
+import Utilities.ImageFinder as ImageFinder
 
 def get_image_location():
     print(ImageFinder.get_image_centre('./Tests/TestData/testVsCLogo.png'))
