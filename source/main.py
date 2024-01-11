@@ -4,7 +4,7 @@ import random
 import sys
 
 sys.path.append('')
-import LoopManagers
+import source.LoopManagers as LoopManagers
 from actions import Factories
 
 clicks_to_stop = 1200
