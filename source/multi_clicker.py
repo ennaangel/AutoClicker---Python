@@ -7,7 +7,7 @@ sys.path.append('')
 import LoopManagers
 from actions import Factories
 
-clicks_to_stop = 800
+clicks_to_stop = 1200
 clicker_positon_deviation_pixels = 10
 time_interval_seconds = 0.3
 

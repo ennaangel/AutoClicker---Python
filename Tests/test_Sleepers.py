@@ -1,7 +1,7 @@
 import sys
 import time
 
-sys.path.append('multi_clicker')
+sys.path.append('source')
 sys.path.append('')
 
 from actions import Sleepers as Sleepers

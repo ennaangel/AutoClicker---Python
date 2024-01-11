@@ -1,5 +1,5 @@
 import sys
-sys.path.append('./multi_clicker')
+sys.path.append('./source')
 
 from actions import Locators
 
