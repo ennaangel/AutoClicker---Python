@@ -25,7 +25,7 @@ class SleepAction(iAction):
     def do(self):
         """Sleep for duration_secs
         """
-        self.Sleeper.sleep(self.duration_secs, self.min_duration_sec)
+        self.Sleeper.sleep(self.duration_secs, self.min_duration_secs)
 
 class MultiAction(iAction):
     def __init__(self, actions: tuple) -> None:
@@ -37,12 +37,33 @@ class MultiAction(iAction):
 
 class LocatorClickerAction(iClicker):
     def __init__(self, Locator: iLocator, Clicker: iClicker, SleeperAction: SleepAction = None) -> None:
+        """Finds location using locator and clicks on it. If no location, returns nothing"""
         self.Clicker = Clicker
         self.Locator = Locator
         self.SleeperAction = SleeperAction
 
     def do(self):
         location = self.Locator.locate()
+        if location == None:
+            return
         if self.SleeperAction != None:
             self.SleeperAction.do()
+        self.Clicker.click(location)
+
+class WaitTillLocationAndClickAction(iClicker):
+    def __init__(self, Locator: iLocator, Clicker: iClicker, WaitSleeperAction: SleepAction = None, IterationSleeperAction: SleepAction = None) -> None:
+        """Waits till location returns a location and clicks it. """
+        self.Clicker = Clicker
+        self.Locator = Locator
+        self.WaitSleeperAction = WaitSleeperAction
+        self.IterationSleeperAction = IterationSleeperAction
+
+    def do(self):
+        location = None 
+        while location = None:
+            if self.IterationSleeperAction != None:
+                self.IterationSleeperAction.do()
+            location = self.Locator.locate()
+        if self.WaitSleeperAction != None:
+            self.WaitSleeperAction.do()
         self.Clicker.click(location)
