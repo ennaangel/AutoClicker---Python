@@ -21,7 +21,7 @@ The function takes a dictionary as input with the following general format:
     - **[premadeAction](#PremadeActionFactory)**: Creates a premade action defined in the premade_actions folder
     - **[clickAction](#ClickActionFactory)**: Creates a click action.
     - **[sleepAction](#SleepActionFactory)**: Creates a sleep action.
-    - **[multiAction](MultiActionFactory)**: Creates a multi action from a list of multiple actions.
+    - **[multiAction](#MultiActionFactory)**: Creates a multi action from a list of multiple actions.
     - **[clickLocation](#LocatorClickerActionFactory)**: Creates a action to click on a location.
 - **action_specefic_parameters**: Parameter dictionary for the specefic action. Each ation needs it's own parameters.
 - **action_specefic_variables**: Variables used in the actions.
