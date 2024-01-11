@@ -1,7 +1,7 @@
 import sys
 sys.path.append('')
 
-import LoopManagers
+import source.LoopManagers as LoopManagers
 
 def test_click_manager():
     LM = LoopManagers.ClickLoopManager(
