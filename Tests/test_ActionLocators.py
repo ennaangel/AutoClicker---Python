@@ -28,10 +28,20 @@ def test_locator_factory():
     assert result == (29, 1055), "Wrong windows logo location"
     print("Passed locator Factory test")
 
+def test_locator_factory_from_imagefolder():
+    parameter = {'type': 'imageFinder',
+                 'image_file': 'image.png',
+                 'folder': "./source/actions/images",
+                 'confidence': 0.8}
+    ImFiLoca = Locators.create_locator(parameters = parameter)
+    result = ImFiLoca.locate()
+    print(result)
+
 def main():
     test_image_finder()
     test_image_displace()
     test_locator_factory()
+    test_locator_factory_from_imagefolder()
 
 if __name__ == "__main__":
     main()
