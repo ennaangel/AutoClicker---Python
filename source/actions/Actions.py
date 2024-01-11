@@ -60,7 +60,7 @@ class WaitTillLocationAndClickAction(iClicker):
 
     def do(self):
         location = None 
-        while location = None:
+        while location == None:
             if self.IterationSleeperAction != None:
                 self.IterationSleeperAction.do()
             location = self.Locator.locate()
