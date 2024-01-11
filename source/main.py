@@ -7,14 +7,14 @@ sys.path.append('')
 import source.LoopManagers as LoopManagers
 from actions import Factories
 
-clicks_to_stop = 1200
+clicks_to_stop = 5
 time_interval_seconds = 0.3
 
 LM = LoopManagers.ClickLoopManager(clicks_to_stop = clicks_to_stop, 
                                    loop_duration = time_interval_seconds)
 
 Action = Factories.create_action(parameters = {'action':'premadeAction',
-                                     'action_parameters':{'name': 'PostOffice'}})
+                                     'action_parameters':{'name': 'ClickImage'}})
 
 def main():
     LM.show_initiation_info()
