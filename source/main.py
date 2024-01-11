@@ -8,7 +8,7 @@ import source.LoopManagers as LoopManagers
 from actions import Factories
 
 clicks_to_stop = 5
-time_interval_seconds = 0.3
+time_interval_seconds = 4#0.3
 
 LM = LoopManagers.ClickLoopManager(clicks_to_stop = clicks_to_stop, 
                                    loop_duration = time_interval_seconds)
@@ -21,8 +21,8 @@ def main():
     while LM.loop_requirement():
         LM.sleep()
         Action.do()
-        LM.print_loop_info()
         LM.update()
+        LM.print_loop_info()
         
     LM.get_run_time()
     

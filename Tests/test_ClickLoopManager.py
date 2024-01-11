@@ -18,10 +18,11 @@ def test_show_loop_info():
     LM = LoopManagers.ClickLoopManager(
         clicks_to_stop = 5, loop_duration = 5)
     LM.print_loop_info()
-    LM.update()
     LM.sleep()
+    LM.update()
     LM.print_loop_info()
     LM.update()
+    LM.print_loop_info()
     
 
 def main():

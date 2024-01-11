@@ -22,6 +22,7 @@ class ClickLoopManager(iLoopManager):
         self.last_click_time = self.get_cur_time()
         self.clicks_to_stop = clicks_to_stop
         self.loop_duration = loop_duration
+        self.last_loop_time = 0 #start with 0 loop
 
         print('Loop Manager initialised')
         print(f' - Start time: {time.ctime()}')
@@ -33,7 +34,7 @@ class ClickLoopManager(iLoopManager):
     def print_loop_info(self):
         """Show loop info"""
         self._get_clicks_to_go()
-        self.get_loop_time()
+        self.show_last_loop_time()
 
     def update(self):
         """Updates loop info, adding a click to click counter and updating loop time"""
@@ -47,6 +48,7 @@ class ClickLoopManager(iLoopManager):
     def update_loop_time(self):
         self.last_click_time = self.cur_click_time
         self.cur_click_time = self.get_cur_time()
+        self.last_loop_time = self.cur_click_time - self.last_click_time
 
     def loop_requirement(self):
         """Keep looping if the number of clicks is lower than clicks to stop"""
@@ -63,6 +65,9 @@ class ClickLoopManager(iLoopManager):
         loop_time = self.get_cur_time() - self.cur_click_time
         print(f" - Current loop duration: {loop_time}")
         return loop_time
+    
+    def show_last_loop_time(self):
+        print(f" - Last loop duration: {self.last_loop_time}")
 
     def get_run_time(self):
         self.end_time = self.get_cur_time()
