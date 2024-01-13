@@ -27,8 +27,8 @@
                     "parameters": {
                         "type": "randomSleeper"
                     },
-                    "duration": 11,
-                    "min_duration_secs":10
+                    "duration": 9,
+                    "min_duration_secs":6
                 }
             }
         }
