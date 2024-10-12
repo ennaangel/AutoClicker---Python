@@ -14,7 +14,7 @@ LM = LoopManagers.ClickLoopManager(clicks_to_stop = clicks_to_stop,
                                    loop_duration = time_interval_seconds)
 
 Action = Factories.create_action(parameters = {'action':'premadeAction',
-                                     'action_parameters':{'name': 'ClickImage'}})
+                                     'action_parameters':{'name': 'Efaunt'}})
 
 def main():
     LM.show_initiation_info()
