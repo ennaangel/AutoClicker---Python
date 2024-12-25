@@ -1,0 +1,36 @@
+{
+    "action": "waitLocationClick",
+    "action_parameters": {
+        "parameters": {
+            "clicker": {
+                "type": "premadeClicker",
+                "name": "QuickRandomClick"
+            },
+            "locator": {
+                "type": "imageFinder",
+                "image_file": "image.png",
+                "folder": "source/actions/images/Chizoar",
+                "confidence": 0.9
+            },
+            "iterationSleeper":{
+                "action": "sleepAction",
+                "action_parameters": {
+                    "parameters": {
+                        "type": "randomSleeper"
+                    },
+                    "duration": 3
+                }
+            },
+            "waitSleeper":{
+                "action": "sleepAction",
+                "action_parameters": {
+                    "parameters": {
+                        "type": "randomSleeper"
+                    },
+                    "duration": 9,
+                    "min_duration_secs":6
+                }
+            }
+        }
+    }
+}
