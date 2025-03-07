@@ -7,7 +7,7 @@ sys.path.append('')
 import source.LoopManagers as LoopManagers
 from actions import Factories
 
-clicks_to_stop = 300
+clicks_to_stop = 100
 time_interval_seconds = 4#0.3
 
 LM = LoopManagers.ClickLoopManager(clicks_to_stop = clicks_to_stop, 
